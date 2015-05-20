@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.JPanel;
 
 public class Ventana extends javax.swing.JFrame {
 
@@ -29,7 +30,7 @@ public class Ventana extends javax.swing.JFrame {
 	private JFrame frame;
 	private JTextField textFieldruta;
 	private JButton BotonAbrirDB;
-	private JLabel jLabelpreview;
+	private JLabel jLabelpreview1;
 
 
 	public Ventana() {
@@ -41,16 +42,28 @@ public class Ventana extends javax.swing.JFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 571, 395);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 535, 200);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		jLabelpreview1 = new JLabel("Preview1");
+		jLabelpreview1.setBounds(10, 74, 96, 100);
+		panel.add(jLabelpreview1);
+		jLabelpreview1.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		textFieldruta = new JTextField();
-		textFieldruta.setBounds(29, 34, 208, 20);
-		frame.getContentPane().add(textFieldruta);
+		textFieldruta.setBounds(31, 30, 355, 20);
+		panel.add(textFieldruta);
 		textFieldruta.setColumns(10);
 		
 		BotonAbrirDB = new JButton("Abrir");
+		BotonAbrirDB.setBounds(422, 29, 89, 23);
+		panel.add(BotonAbrirDB);
 		
 		
 		BotonAbrirDB.addActionListener(new ActionListener() {
@@ -58,14 +71,6 @@ public class Ventana extends javax.swing.JFrame {
 				BotonAbrirDBActionPerformed(evt);
 			}
 		});
-	
-		BotonAbrirDB.setBounds(312, 33, 89, 23);
-		frame.getContentPane().add(BotonAbrirDB);
-		
-		jLabelpreview = new JLabel("Preview");
-		jLabelpreview.setHorizontalAlignment(SwingConstants.CENTER);
-		jLabelpreview.setBounds(29, 84, 123, 129);
-		frame.getContentPane().add(jLabelpreview);
 	}
 	
 	private void BotonAbrirDBActionPerformed(ActionEvent evt){
@@ -79,14 +84,13 @@ public class Ventana extends javax.swing.JFrame {
 			textFieldruta.setText(ruta);
 			Image preview = Toolkit.getDefaultToolkit().getImage(ruta);
 			if (preview != null) {
-				jLabelpreview.setText("");
-				ImageIcon icon = new ImageIcon(preview.getScaledInstance(jLabelpreview.getWidth(),jLabelpreview.getHeight(), Image.SCALE_DEFAULT));
-				jLabelpreview.setIcon(icon);
+				jLabelpreview1.setText("");
+				ImageIcon icon = new ImageIcon(preview.getScaledInstance(jLabelpreview1.getWidth(),jLabelpreview1.getHeight(), Image.SCALE_DEFAULT));
+				jLabelpreview1.setIcon(icon);
 				
 				
 			}
 		}
 		
 	}
-	
 }

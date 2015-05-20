@@ -7,7 +7,7 @@ public class ImageconnectionApp {
 		Ventana win = new Ventana();
 		win.setTitle("Guardar y leer Imagenes en Mysql");
 		win.setLocationRelativeTo(null);
-		win.setResizable(false);
+		win.setResizable(true);
 		win.setVisible(true);
 	}
 }
