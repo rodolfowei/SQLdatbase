@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+
 import java.awt.Color;
 
 public class Ventana extends javax.swing.JFrame {
@@ -73,6 +75,7 @@ public class Ventana extends javax.swing.JFrame {
 		
 		panel1 = new JPanel();
 		panel1.setBounds(23, 11, 524, 266);
+		panel1.setBorder(BorderFactory.createTitledBorder("Guardar imagen"));
 		frame.getContentPane().add(panel1);
 		panel1.setLayout(null);
 		
@@ -93,22 +96,27 @@ public class Ventana extends javax.swing.JFrame {
 		jLabelpreview1.setBounds(99, 65, 160, 179);
 		panel1.add(jLabelpreview1);
 		jLabelpreview1.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(408, 118, 89, 23);
 		panel1.add(btnGuardar);
 		
 		panel2 = new JPanel();
-		panel2.setBounds(23, 288, 524, 210);
+		panel2.setBounds(23, 288, 524, 247);
+		panel2.setBorder(BorderFactory.createTitledBorder("Leer Imagen"));
 		frame.getContentPane().add(panel2);
 		panel2.setLayout(null);
+		
 		btnNext = new JButton("Next");
-		btnNext.setBounds(315, 144, 89, 23);
+		btnNext.setBounds(296, 194, 89, 23);
 		panel2.add(btnNext);
+		
 		btnprevious = new JButton("Previous");
-		btnprevious.setBounds(152, 144, 89, 23);
+		btnprevious.setBounds(138, 194, 89, 23);
 		panel2.add(btnprevious);
+		
 		jlabelpreview2 = new JLabel("Preview2");
-		jlabelpreview2.setBounds(202, 11, 146, 115);
+		jlabelpreview2.setBounds(184, 23, 158, 160);
 		panel2.add(jlabelpreview2);
 		
 		
