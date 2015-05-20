@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public class Ventana extends javax.swing.JFrame {
 
@@ -40,10 +41,7 @@ public class Ventana extends javax.swing.JFrame {
 	
 	private JFrame frame;
 	private JTextField textFieldruta;
-		
-	private JPanel panel1;
-	private JPanel subpanel1;
-	private JPanel subpanel2;
+	
 	
 	private JLabel jLabelpreview1;
 	private JLabel jlabelpreview2;
@@ -53,90 +51,99 @@ public class Ventana extends javax.swing.JFrame {
 	private JButton btnNext;        //boton3
 	private JButton btnGuardar;     //boton2
 	private JButton btnDescargar;   //boton5
+	private JPanel panel1;
+	private JPanel panel2;
 
 
 	public Ventana() {
 		initialize();
+		bd = new ProductsDB("localhost", "root", "root"); //Check if the parameters are correct
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 571, 395);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		
+		//Object creation
+		setFrame(new JFrame());
+		getFrame().setBounds(600, 600, 600, 600);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().getContentPane().setLayout(null);
 		
 		panel1 = new JPanel();
-		panel1.setBounds(10, 11, 535, 335);
+		panel1.setBounds(23, 11, 524, 266);
 		frame.getContentPane().add(panel1);
 		panel1.setLayout(null);
 		
-		subpanel1 = new JPanel();
-		subpanel1.setBounds(0, 0, 535, 200);
-		panel1.add(subpanel1);
-		subpanel1.setLayout(null);
-		
-		jLabelpreview1 = new JLabel("Preview1");
-		jLabelpreview1.setBounds(10, 74, 96, 100);
-		subpanel1.add(jLabelpreview1);
-		jLabelpreview1.setHorizontalAlignment(SwingConstants.CENTER);
-		
+		//text fields
 		textFieldruta = new JTextField();
-		textFieldruta.setBounds(31, 30, 355, 20);
-		subpanel1.add(textFieldruta);
+		textFieldruta.setBounds(23, 24, 355, 20);
+		panel1.add(textFieldruta);
 		textFieldruta.setColumns(10);
 		
+		//buttons
 		BotonAbrirDB = new JButton("Abrir");
-		BotonAbrirDB.setBounds(436, 29, 89, 23);
-		subpanel1.add(BotonAbrirDB);
+		BotonAbrirDB.setBounds(408, 23, 89, 23);
+		panel1.add(BotonAbrirDB);
 		
+		//labels for images
+		jLabelpreview1 = new JLabel("Preview1");
+		jLabelpreview1.setBackground(Color.BLACK);
+		jLabelpreview1.setBounds(99, 65, 160, 179);
+		panel1.add(jLabelpreview1);
+		jLabelpreview1.setHorizontalAlignment(SwingConstants.CENTER);
 		btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				BotonGuardarDBActionPerformed(evt);
-			}
-		});
-		btnGuardar.setBounds(436, 113, 89, 23);
-		subpanel1.add(btnGuardar);
+		btnGuardar.setBounds(408, 118, 89, 23);
+		panel1.add(btnGuardar);
 		
-		subpanel2 = new JPanel();
-		subpanel2.setBounds(0, 211, 535, 124);
-		panel1.add(subpanel2);
-		subpanel2.setLayout(null);
-		
-		btnprevious = new JButton("Previous");
-		btnprevious.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				BotonPreviousDBActionPerformed(evt);
-			}
-		});
-		btnprevious.setBounds(29, 90, 89, 23);
-		subpanel2.add(btnprevious);
-		
+		panel2 = new JPanel();
+		panel2.setBounds(23, 288, 524, 210);
+		frame.getContentPane().add(panel2);
+		panel2.setLayout(null);
 		btnNext = new JButton("Next");
-		btnNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				BotonNextDBActionPerformed(evt);
-			}
-		});
-		btnNext.setBounds(411, 90, 89, 23);
-		subpanel2.add(btnNext);
-		
+		btnNext.setBounds(315, 144, 89, 23);
+		panel2.add(btnNext);
+		btnprevious = new JButton("Previous");
+		btnprevious.setBounds(152, 144, 89, 23);
+		panel2.add(btnprevious);
 		jlabelpreview2 = new JLabel("Preview2");
-		jlabelpreview2.setHorizontalAlignment(SwingConstants.CENTER);
-		jlabelpreview2.setBounds(192, 11, 146, 102);
-		subpanel2.add(jlabelpreview2);
+		jlabelpreview2.setBounds(202, 11, 146, 115);
+		panel2.add(jlabelpreview2);
 		
+		
+		jlabelpreview2.setHorizontalAlignment(SwingConstants.CENTER);
 		btnDescargar = new JButton("Descargar");
+		btnDescargar.setBounds(410, 64, 89, 23);
+		panel2.add(btnDescargar);
+		
+		
 		btnDescargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				BotonDescargarDBActionPerformed(evt);
 			}
 		});
-		btnDescargar.setBounds(436, 11, 89, 23);
-		subpanel2.add(btnDescargar);
+		
+		
+		btnprevious.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				BotonPreviousDBActionPerformed(evt);
+			}
+		});
+		
+		
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				BotonNextDBActionPerformed(evt);
+			}
+		});
+		
+		
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				BotonGuardarDBActionPerformed(evt);
+			}
+		});
 		
 		
 		BotonAbrirDB.addActionListener(new ActionListener() {
@@ -225,6 +232,16 @@ public class Ventana extends javax.swing.JFrame {
 				jlabelpreview2.setIcon(icon);
 				jlabelpreview2.updateUI();
 			}
+		}else{
+			contador--;
 		}
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
 	}
 }
