@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class Ventana extends javax.swing.JFrame {
 
@@ -24,25 +26,7 @@ public class Ventana extends javax.swing.JFrame {
 	private JFrame frame;
 	private JTextField textFieldruta;
 
-	/**
-	 * Launch the application. (This needs to be modified cause we don't want a main on this class
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana window = new Ventana();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
 	public Ventana() {
 		initialize();
 	}
@@ -63,27 +47,43 @@ public class Ventana extends javax.swing.JFrame {
 		
 		JButton BotonAbrirDB = new JButton("Abrir");
 		
-		//Think about putting the Action performed out of the initialize 
+		
 		
 		BotonAbrirDB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				final JFileChooser elegirImagen = new JFileChooser();
-				elegirImagen.setMultiSelectionEnabled(false);
-				int o = elegirImagen.showOpenDialog(elegirImagen); 
-				//Maybe in showOpenDialog the argument is not BotonAbrirDB
-				if (o == JFileChooser.APPROVE_OPTION ) {
-					ruta = elegirImagen.getSelectedFile().getAbsolutePath();
-					nombre = elegirImagen.getSelectedFile().getName();
-					textFieldruta.setText(ruta);
-					Image preview = Toolkit.getDefaultToolkit().getImage(ruta);
-					if (preview != null) {
-						
-					}
-				}
-				
+			public void actionPerformed(ActionEvent evt) {
+				BotonAbrirDBActionPerformed(evt);
 			}
 		});
+				/*
+				
+				
+			}
+		});*/
 		BotonAbrirDB.setBounds(312, 33, 89, 23);
 		frame.getContentPane().add(BotonAbrirDB);
+		
+		JLabel jLabelpreview = new JLabel("Preview");
+		jLabelpreview.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabelpreview.setBounds(29, 84, 123, 129);
+		frame.getContentPane().add(jLabelpreview);
 	}
+	
+	private void BotonAbrirDBActionPerformed(ActionEvent evt){
+		final JFileChooser elegirImagen = new JFileChooser();
+		elegirImagen.setMultiSelectionEnabled(false);
+		int o = elegirImagen.showOpenDialog(elegirImagen); 
+		
+		if (o == JFileChooser.APPROVE_OPTION ) {
+			ruta = elegirImagen.getSelectedFile().getAbsolutePath();
+			nombre = elegirImagen.getSelectedFile().getName();
+			textFieldruta.setText(ruta);
+			Image preview = Toolkit.getDefaultToolkit().getImage(ruta);
+			if (preview != null) {
+				
+				
+			}
+		}
+		
+	}
+	
 }
