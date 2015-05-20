@@ -30,7 +30,14 @@ public class Ventana extends javax.swing.JFrame {
 	private JFrame frame;
 	private JTextField textFieldruta;
 	private JButton BotonAbrirDB;
+	
+	private JPanel panel1;
 	private JLabel jLabelpreview1;
+	private JPanel subpanel1;
+	private JPanel subpanel2;
+	private JButton btnprevious;
+	private JButton btnNext;
+	private JLabel jlabelpreview2;
 
 
 	public Ventana() {
@@ -46,24 +53,47 @@ public class Ventana extends javax.swing.JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 535, 200);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
+		panel1 = new JPanel();
+		panel1.setBounds(10, 11, 535, 335);
+		frame.getContentPane().add(panel1);
+		panel1.setLayout(null);
+		
+		subpanel1 = new JPanel();
+		subpanel1.setBounds(0, 0, 535, 200);
+		panel1.add(subpanel1);
+		subpanel1.setLayout(null);
 		
 		jLabelpreview1 = new JLabel("Preview1");
 		jLabelpreview1.setBounds(10, 74, 96, 100);
-		panel.add(jLabelpreview1);
+		subpanel1.add(jLabelpreview1);
 		jLabelpreview1.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		textFieldruta = new JTextField();
 		textFieldruta.setBounds(31, 30, 355, 20);
-		panel.add(textFieldruta);
+		subpanel1.add(textFieldruta);
 		textFieldruta.setColumns(10);
 		
 		BotonAbrirDB = new JButton("Abrir");
 		BotonAbrirDB.setBounds(422, 29, 89, 23);
-		panel.add(BotonAbrirDB);
+		subpanel1.add(BotonAbrirDB);
+		
+		subpanel2 = new JPanel();
+		subpanel2.setBounds(0, 211, 535, 124);
+		panel1.add(subpanel2);
+		subpanel2.setLayout(null);
+		
+		btnprevious = new JButton("Previous");
+		btnprevious.setBounds(29, 90, 89, 23);
+		subpanel2.add(btnprevious);
+		
+		btnNext = new JButton("Next");
+		btnNext.setBounds(411, 90, 89, 23);
+		subpanel2.add(btnNext);
+		
+		jlabelpreview2 = new JLabel("Preview2");
+		jlabelpreview2.setHorizontalAlignment(SwingConstants.CENTER);
+		jlabelpreview2.setBounds(192, 11, 146, 102);
+		subpanel2.add(jlabelpreview2);
 		
 		
 		BotonAbrirDB.addActionListener(new ActionListener() {
