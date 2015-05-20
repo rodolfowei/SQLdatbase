@@ -1,9 +1,9 @@
 package SQL_conn;
 
 import java.awt.Image;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -23,8 +24,12 @@ public class Ventana extends javax.swing.JFrame {
 	ProductsDB bd;
 	int contador = 0;
 	
+	//Window objects
+	
 	private JFrame frame;
 	private JTextField textFieldruta;
+	private JButton BotonAbrirDB;
+	private JLabel jLabelpreview;
 
 
 	public Ventana() {
@@ -45,7 +50,7 @@ public class Ventana extends javax.swing.JFrame {
 		frame.getContentPane().add(textFieldruta);
 		textFieldruta.setColumns(10);
 		
-		JButton BotonAbrirDB = new JButton("Abrir");
+		BotonAbrirDB = new JButton("Abrir");
 		
 		
 		
@@ -54,15 +59,11 @@ public class Ventana extends javax.swing.JFrame {
 				BotonAbrirDBActionPerformed(evt);
 			}
 		});
-				/*
-				
-				
-			}
-		});*/
+	
 		BotonAbrirDB.setBounds(312, 33, 89, 23);
 		frame.getContentPane().add(BotonAbrirDB);
 		
-		JLabel jLabelpreview = new JLabel("Preview");
+		jLabelpreview = new JLabel("Preview");
 		jLabelpreview.setHorizontalAlignment(SwingConstants.CENTER);
 		jLabelpreview.setBounds(29, 84, 123, 129);
 		frame.getContentPane().add(jLabelpreview);
@@ -79,6 +80,9 @@ public class Ventana extends javax.swing.JFrame {
 			textFieldruta.setText(ruta);
 			Image preview = Toolkit.getDefaultToolkit().getImage(ruta);
 			if (preview != null) {
+				jLabelpreview.setText("");
+				ImageIcon icon = new ImageIcon(preview.getScaledInstance(jLabelpreview.getWidth(),jLabelpreview.getHeight(), Image.SCALE_DEFAULT));
+				jLabelpreview.setIcon(icon);
 				
 				
 			}
