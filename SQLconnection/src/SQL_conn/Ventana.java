@@ -53,7 +53,6 @@ public class Ventana extends javax.swing.JFrame {
 		BotonAbrirDB = new JButton("Abrir");
 		
 		
-		
 		BotonAbrirDB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				BotonAbrirDBActionPerformed(evt);
