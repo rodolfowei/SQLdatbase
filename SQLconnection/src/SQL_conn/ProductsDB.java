@@ -69,7 +69,7 @@ public class ProductsDB {
 	}
 	
 	ArrayList<Imagen> getImages(){
-		ArrayList<Imagen> lista = new ArrayList();
+		ArrayList<Imagen> lista = new ArrayList<Imagen>();
 		try {
 			ResultSet rs = st.executeQuery("SELECT imagen, nombre From imagenes");
 			

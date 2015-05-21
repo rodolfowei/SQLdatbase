@@ -1,7 +1,5 @@
 package SQL_conn;
 
-import java.awt.EventQueue;
-
 public class ImageconnectionApp {
 
 	public static void main(String args[]) {
