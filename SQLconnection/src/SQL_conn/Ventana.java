@@ -59,7 +59,7 @@ public class Ventana extends javax.swing.JFrame {
 
 	public Ventana() {
 		initialize();
-		bd = new ProductsDB("localhost", "root", "root"); //Check if the parameters are correct
+		bd = new ProductsDB("localhost:8889", "root", "root"); //Check if the parameters are correct
 	}
 
 	/**
