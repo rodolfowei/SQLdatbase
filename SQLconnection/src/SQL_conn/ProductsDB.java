@@ -28,9 +28,11 @@ public class ProductsDB {
 	
 	public ProductsDB(String host, String user, String pass) {
 		
+		
+		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			conexion = DriverManager.getConnection("jdbc:mysql://"+host+"/pruebas", user, pass);
+			conexion = DriverManager.getConnection("jdbc:mysql://"+host+"/imagenes", user, pass);
 			st = conexion.createStatement();
 			
 		}catch (Exception ex) {
